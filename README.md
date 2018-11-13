@@ -8,6 +8,7 @@ A mobile App that allows users users to see the list of Java  developers in Nair
 
 [Details of the developer(s)](https://github.com/huxaiphaer/ConvergeLevelApp/blob/develop/mockups/mock_up1.png)
 
+
 ### Technologies Used.
 * Android.
 * Xml.
