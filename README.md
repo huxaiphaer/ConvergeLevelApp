@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/huxaiphaer/ConvergeLevelApp/tree/develop.svg?style=svg)](https://circleci.com/gh/huxaiphaer/ConvergeLevelApp/tree/develop)
+
 ## Converge LevelApp
 
 A mobile App that allows users users to see the list of Java  developers in Nairobi.
