@@ -12,6 +12,9 @@ A mobile App that allows users to see the list of Java  developers in Nairobi.
 
 [Details of the developer(s)](https://github.com/huxaiphaer/ConvergeLevelApp/blob/develop/mockups/mock_up1.png)
 
+The tool used to develop the mockups is called [Pencil Project](https://pencil.evolus.vn/).
+This tool has plugins for material design, which makes it suitable for designing android Apps.
+
 
 ### Technologies Used.
 * Android.

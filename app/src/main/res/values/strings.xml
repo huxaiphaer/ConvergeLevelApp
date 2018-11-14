@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Converge Level App</string>
+    <string name="github_name">Huxy</string>
+    <string name="github_url">https://github.com/huxaiphaer</string>
 </resources>
