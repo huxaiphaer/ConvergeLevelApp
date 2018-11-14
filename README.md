@@ -1,8 +1,10 @@
 [![CircleCI](https://circleci.com/gh/huxaiphaer/ConvergeLevelApp/tree/develop.svg?style=svg)](https://circleci.com/gh/huxaiphaer/ConvergeLevelApp/tree/develop)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ab6b274ddcb7d01c93b4/maintainability)](https://codeclimate.com/github/huxaiphaer/ConvergeLevelApp/maintainability)
+
 
 ## Converge LevelApp
 
-A mobile App that allows users users to see the list of Java  developers in Nairobi.
+A mobile App that allows users to see the list of Java  developers in Nairobi.
 
 ### Mockups.
 
@@ -26,6 +28,12 @@ You need the following :
 
 * Android studio.
 * Linux, macOS or Windows.
+
+
+### Mockups.
+
+The tool used to develop the mockups it's called [Pencil Project](https://pencil.evolus.vn/).
+This tool has plugins for material design, which makes it suitable for designing android Apps.
 
 ### Getting Started.
 
