@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         card_view:cardElevation="2dp"
@@ -17,6 +17,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
+                android:padding="6dp"
                 android:layout_height="wrap_content">
                 <View
                     android:layout_width="5dp"
@@ -26,12 +27,15 @@
                 <ImageView
                     android:layout_width="150px"
                     android:layout_height="150px"
+                    android:id="@+id/profile_img"
                     android:layout_margin="8dp"
                     />
                 <TextView
                     android:layout_gravity="center_vertical"
+                    android:id="@+id/username_txt"
                     android:layout_width="wrap_content"
                     android:text="Name"
+                    android:layout_margin="8dp"
                     android:textColor="@color/devNames"
                     android:textStyle="bold"
                     android:layout_height="wrap_content" />
