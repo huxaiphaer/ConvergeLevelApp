@@ -80,6 +80,8 @@ dependencies {
     androidTestUtil 'com.android.support.test:orchestrator:1.0.2-alpha1'
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.robolectric:robolectric:3.7.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.koushikdutta.ion:ion:2.+'
     implementation 'com.mikhaellopez:circularimageview:3.2.0'
 }
