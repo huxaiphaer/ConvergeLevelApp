@@ -67,7 +67,6 @@ public class DevelopersAdapter extends  RecyclerView.Adapter<DevelopersAdapter.D
         });
     }
 
-
     @Override
     public int getItemCount() {
         return itemList.size();
