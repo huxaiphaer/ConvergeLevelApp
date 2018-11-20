@@ -10,7 +10,6 @@ public class RetrofitClient {
     private static final String BASE_URL = "https://api.github.com";
 
      //Create the Retrofit instance//
-
     public static Retrofit getRetrofitInstance() {
         if (retrofit == null) {
             retrofit = new retrofit2.Retrofit.Builder()

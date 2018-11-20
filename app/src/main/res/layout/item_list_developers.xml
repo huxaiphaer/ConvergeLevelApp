@@ -38,6 +38,7 @@
                     android:layout_margin="8dp"
                     android:textColor="@color/devNames"
                     android:textStyle="bold"
+                    android:textSize="18dp"
                     android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>

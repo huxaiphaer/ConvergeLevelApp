@@ -10,23 +10,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.koushikdutta.ion.Ion;
-import com.levelapp.converge.convergelevelapp.DetailsActivity;
+
+import model.Items;
+import view.DetailsActivity;
 import com.levelapp.converge.convergelevelapp.R;
 
-import java.util.List;
-
-import model.DeveloperModel;
+import java.util.ArrayList;
 
 public class DevelopersAdapter extends  RecyclerView.Adapter<DevelopersAdapter.DeveloperHolder> {
 
 
-    private List<DeveloperModel> itemList;
+    private ArrayList<Items> itemList;
     private Context context;
     public static final String USERNAME = "username";
     public static final String URL ="url";
     public static final String PROFILE_PIC ="profile_pic";
 
-    public DevelopersAdapter(List<DeveloperModel> itemList, Context context) {
+    public DevelopersAdapter(ArrayList<Items> itemList, Context context) {
         this.itemList = itemList;
         this.context = context;
     }
@@ -44,7 +44,7 @@ public class DevelopersAdapter extends  RecyclerView.Adapter<DevelopersAdapter.D
     public void onBindViewHolder(@NonNull DeveloperHolder holder, int position) {
 
 
-        final DeveloperModel dm = itemList.get(position);
+        final Items dm = itemList.get(position);
         final String username = dm.getName();
         final String  profile_pic = dm.getProfile_pic();
         final String url = dm.getUrl();

@@ -1,4 +1,4 @@
-package com.levelapp.converge.convergelevelapp;
+package view;
 import android.content.Intent;
 
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.koushikdutta.ion.Ion;
+import com.levelapp.converge.convergelevelapp.R;
 
 import adapter.DevelopersAdapter;
 
@@ -53,6 +54,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         String userName = i.getStringExtra(DevelopersAdapter.USERNAME);
+
         String usernameUrl = i.getStringExtra(DevelopersAdapter.URL);
         String profilePic = i.getStringExtra(DevelopersAdapter.PROFILE_PIC);
 
