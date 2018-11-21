@@ -2,7 +2,7 @@ package presenter;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
+
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -22,11 +22,12 @@ import retrofit2.Response;
 import service.GetData;
 import service.RetrofitClient;
 
-public class GithubPresenter {
+public class GithubPresenter extends Activity{
 
     private Context context;
     private Activity activity;
     private ProgressBar pb;
+    private RecyclerView rv;
 
     public GithubPresenter(Context context, Activity activity) {
         this.context =context;
@@ -47,15 +48,12 @@ public class GithubPresenter {
                 try {
                     DeveloperModel jsonResponse = response.body();
                     ArrayList<Items> data = new ArrayList<>(Arrays.asList(jsonResponse.getItems()));
-
-                    RecyclerView rv;
                     rv = activity.findViewById(R.id.rv);
 
 
                     pb= activity.findViewById(R.id.pb);
                     pb.setVisibility(View.VISIBLE);
 
-                    rv.setLayoutManager(new LinearLayoutManager(context));
                     DevelopersAdapter developersAdapter = new DevelopersAdapter(data, context);
                     rv.setAdapter(developersAdapter);
 
