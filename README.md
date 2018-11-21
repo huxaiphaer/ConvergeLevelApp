@@ -1,6 +1,6 @@
 [![CircleCI](https://circleci.com/gh/huxaiphaer/ConvergeLevelApp/tree/develop.svg?style=svg)](https://circleci.com/gh/huxaiphaer/ConvergeLevelApp/tree/develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ab6b274ddcb7d01c93b4/maintainability)](https://codeclimate.com/github/huxaiphaer/ConvergeLevelApp/maintainability)
-
+[![codecov](https://codecov.io/gh/huxaiphaer/ConvergeLevelApp/branch/develop/graph/badge.svg)](https://codecov.io/gh/huxaiphaer/ConvergeLevelApp)
 
 ## Converge LevelApp
 
