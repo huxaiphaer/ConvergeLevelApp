@@ -1,0 +1,44 @@
+language: android
+jdk: oraclejdk8
+env:
+  global:
+    - ANDROID_API_LEVEL=28
+    - ANDROID_ABI=armeabi-v7a
+    - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
+    - QEMU_AUDIO_DRV=none # Remove audio
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.android/build-cache
+
+android:
+  licenses:
+    - 'android-sdk-preview-license-.+'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
+  components:
+    - tools
+    - platform-tools
+    - android-$ANDROID_API_LEVEL
+    - android-28
+    - add-on
+    - sys-img-armeabi-v7a-android-28
+    - extra
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - addon-google_apis-google-$ANDROID_API_LEVEL
+before_script:
+    - android list targets # list pre-installed targets
+    - android list sdk --no-ui --all --extended | grep -E '^id:' | awk -F '"' '{$1=""; print $2}' # <---- list all available components
+    - echo no | android create avd --force -n test -t android-28 --abi arm64-v8a
+    - emulator -avd test -no-audio -no-window &
+    - android-wait-for-emulator
+    - adb shell input keyevent 82 &
+script:
+    - ./gradlew clean installDebug
+    - ./gradlew check
+    - ./gradlew testDebugUnitTest
+    - ./gradlew connectedDebugAndroidTest
