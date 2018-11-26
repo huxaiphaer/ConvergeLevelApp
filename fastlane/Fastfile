@@ -1,0 +1,80 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  before_all do
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+      desc "Deploy a new Dev APK to #converge-codelab-qa channel"
+      lane :dev do |options|
+          build(
+              flavor: "Dev"
+          )
+          upload_to_slack()
+      end
+
+
+
+
+      desc "Build a new APK"
+      private_lane :build do |options|
+          gradle(
+              task: "clean assemble",
+              build_type: "Release"
+          )
+      end
+
+      desc "Upload the latest output APK to #converge-codelab-QA Slack channel"
+      private_lane :upload_to_slack do |options|
+          full_file_path = lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
+          file_name = full_file_path.gsub(/\/.*\//,"")
+          sh "echo Uploading " + file_name + " to #converge-codelab-QA Slack"
+          sh "curl https://slack.com/api/files.upload -F token=\"xoxp-424384161762-466563814388-466639297027-6785d748e33519ef56ec60cd0bce8531\" -F channels=\"converge-codelab-qa\" -F title=\"" + file_name + "\" -F filename=\"" + file_name + "\" -F file=@" + full_file_path
+      end
+
+
+  after_all do |lane|
+    file_name = lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH].gsub(/\/.*\//,"")
+    slack(
+        message: "Successfully Deployed App",
+        default_payloads: [
+            :git_branch,
+            :last_git_commit_hash,
+            :last_git_commit_message
+                ],
+        payload: {
+            # Optional, lets you specify any number of your own Slack attachments.
+            "Build Date" => Time.new.to_s,
+            "APK" => file_name
+                },
+                success: true
+            )
+            end
+
+        lane :slackbuild do
+          gradle(task: "assembleRelease")
+          slack(message: "Build Successful!")
+          upload_to_slack()
+        end
+
+end
