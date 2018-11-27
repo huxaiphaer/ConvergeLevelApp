@@ -16,6 +16,10 @@ import adapter.DevelopersAdapter;
 
 public class DetailsActivity extends AppCompatActivity {
 
+    private String userName = "";
+    private String usernameUrl = "";
+    private String profilePic = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +29,13 @@ public class DetailsActivity extends AppCompatActivity {
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Developer Details");
+
+        Intent i = getIntent();
+
+        userName = i.getStringExtra(DevelopersAdapter.USERNAME);
+        usernameUrl = i.getStringExtra(DevelopersAdapter.URL);
+        profilePic = i.getStringExtra(DevelopersAdapter.PROFILE_PIC);
+
         setDetailsData();
     }
 
@@ -35,6 +46,14 @@ public class DetailsActivity extends AppCompatActivity {
 
             case android.R.id.home:
                 onBackPressed();
+                break;
+            case R.id.action_share:
+                String message = String.format("Check out this awesome developer @%s, %s", userName, usernameUrl);
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, message);
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
                 break;
                 default:
                     break;
@@ -51,12 +70,6 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     private void setDetailsData(){
-
-        Intent i = getIntent();
-        String userName = i.getStringExtra(DevelopersAdapter.USERNAME);
-
-        String usernameUrl = i.getStringExtra(DevelopersAdapter.URL);
-        String profilePic = i.getStringExtra(DevelopersAdapter.PROFILE_PIC);
 
         TextView usernameDetailsTxt = findViewById(R.id.username_details_txt);
         TextView urlDetailsTxt = findViewById(R.id.url_details_txt);

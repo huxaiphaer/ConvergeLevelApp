@@ -5,7 +5,7 @@
     tools:context="view.MainActivity">
 
     <item
-        android:id="@+id/action_favorite"
+        android:id="@+id/action_share"
         android:orderInCategory="300"
         android:title="User"
         android:icon="@drawable/share_icon"
