@@ -38,8 +38,6 @@ script:
   - ./gradlew build check
   - if [ -e ./gradlew ]; then ./gradlew jacocoTestReport;else gradle jacocoTestReport;fi
   - bash <(curl -s https://codecov.io/bash)
-  - JACOCO_SOURCE_PATH=src/main/java ./cc-test-reporter format-coverage ./build/reports/jacoco/jacocoTestReport.xml --input-type jacoco
-
 
 after_success:
     - codecov
