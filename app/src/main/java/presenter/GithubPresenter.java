@@ -3,6 +3,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
+import android.support.test.espresso.idling.CountingIdlingResource;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -34,9 +35,10 @@ public class GithubPresenter extends Activity{
         this.activity= activity;
     }
 
-    public void getJavaDevelopers(){
+    public void getJavaDevelopers(final CountingIdlingResource countingIdlingResource){
 
         GetData service = RetrofitClient.getRetrofitInstance().create(GetData.class);
+        countingIdlingResource.increment();
 
         Call<DeveloperModel> call = service.getDevelopers();
 
@@ -58,9 +60,11 @@ public class GithubPresenter extends Activity{
                     rv.setAdapter(developersAdapter);
 
                     pb.setVisibility(View.INVISIBLE);
+                    countingIdlingResource.decrement();
                 } catch (Exception e) {
 
                     e.printStackTrace();
+                    countingIdlingResource.decrement();
 
                 }
             }
@@ -69,6 +73,7 @@ public class GithubPresenter extends Activity{
             public void onFailure(@NonNull  Call<DeveloperModel> call, Throwable t) {
 
                 Toast.makeText(context, "Unable to load users.", Toast.LENGTH_SHORT).show();
+                countingIdlingResource.decrement();
 
             }
         });
