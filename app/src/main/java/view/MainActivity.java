@@ -2,10 +2,10 @@ package view;
 
 import android.os.Parcelable;
 import android.os.PersistableBundle;
+import android.support.test.espresso.idling.CountingIdlingResource;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.levelapp.converge.convergelevelapp.R;
@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     public final static String LIST_STATE_KEY = "recycler_list_state";
     private RecyclerView rv;
 
+    CountingIdlingResource espressoTestIdlingResource = new CountingIdlingResource("Network_Call");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(mLayoutManager);
 
         GithubPresenter githubPresenter = new GithubPresenter(MainActivity.this,this);
-        githubPresenter.getJavaDevelopers();
+        githubPresenter.getJavaDevelopers(espressoTestIdlingResource);
 
     }
 
@@ -53,12 +55,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        System.out.println("check layout " + mLayoutManager);
         if(listState != null){
             mLayoutManager.onRestoreInstanceState(listState);
 
         }
 
+    }
+
+    public CountingIdlingResource getEspressoIdlingResourceForMainActivity() {
+        return espressoTestIdlingResource;
     }
 
 
