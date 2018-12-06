@@ -38,6 +38,7 @@ ext{
     roboelectricVersion = '3.7.1'
     ionLibrary = '2.+'
     junitVersion = '4.12'
+    testbutlerVersion = '2.0.0'
 }
 
 task clean(type: Delete) {

@@ -3,6 +3,10 @@ package com.levelapp.converge.convergelevelapp;
 
 import android.support.test.espresso.Espresso;
 
+import android.support.test.espresso.IdlingRegistry;
+import android.support.test.espresso.action.ViewActions;
+import android.support.test.espresso.contrib.RecyclerViewActions;
+import android.support.test.espresso.idling.CountingIdlingResource;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -40,5 +44,6 @@ public class DetailActivityTest {
         }
 
     }
+
 
 }
