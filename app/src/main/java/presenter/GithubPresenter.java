@@ -46,12 +46,10 @@ public class GithubPresenter extends Activity{
             @Override
             public void onResponse(@NonNull Call<DeveloperModel> call, Response<DeveloperModel> response) {
 
-
                 try {
                     DeveloperModel jsonResponse = response.body();
                     ArrayList<Items> data = new ArrayList<>(Arrays.asList(jsonResponse.getItems()));
                     rv = activity.findViewById(R.id.rv);
-
 
                     pb= activity.findViewById(R.id.pb);
                     pb.setVisibility(View.VISIBLE);
@@ -74,10 +72,8 @@ public class GithubPresenter extends Activity{
 
                 Toast.makeText(context, "Unable to load users.", Toast.LENGTH_SHORT).show();
                 countingIdlingResource.decrement();
-
             }
         });
-
     }
 
 

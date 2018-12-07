@@ -71,6 +71,7 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     implementation "com.android.support:animated-vector-drawable:$rootProject.supportLibraryVersion"
     implementation "com.android.support:exifinterface:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
     implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
     testImplementation "junit:junit:$rootProject.junitVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoLibraryVersion"
@@ -80,6 +81,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
     implementation "com.koushikdutta.ion:ion:$rootProject.ionLibrary"
+    androidTestImplementation "com.linkedin.testbutler:test-butler-library:$rootProject.testbutlerVersion"
 
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoLibraryVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$rootProject.espressoLibraryVersion"
